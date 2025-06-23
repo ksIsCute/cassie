@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700"
+    />
+
+    <title>Cassie Clip Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!-- Modular JavaScript Files -->
+    <script src="../js/notifications.js" defer></script>
+    <script src="../js/sidebar.js" defer></script>
+    <script src="../js/admin-charts.js" defer></script>
+    <script src="../js/admin-core.js" defer></script>
+    <script src="../js/admin-dashboard-main.js" defer></script>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-[#121417] dark group/design-root overflow-x-hidden" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <!-- Header -->
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#2b3136] px-10 py-3">
+          <div class="flex items-center gap-4 text-white">
+            <img src="../images/logo.png" alt="Cassie Clip Logo" class="logo-img">
+            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Cassie Clip Dashboard</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="nav-link text-white text-sm font-medium leading-normal" href="index.html">Home</a>
+              <a class="nav-link text-[#bfd6ec] text-sm font-medium leading-normal" href="#">Dashboard</a>
+              <a class="nav-link text-white text-sm font-medium leading-normal" href="#">Commands</a>
+              <a class="nav-link text-white text-sm font-medium leading-normal" href="#">Settings</a>
+              <a class="nav-link text-white text-sm font-medium leading-normal" href="#">Support</a>
+            </div>
+            <button class="notification-btn flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#2b3136] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+              <div class="text-white" data-icon="Bell" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"></path>
+                </svg>
+              </div>
+            </button>
+            <div class="flex items-center gap-2 bg-[#2b3136] rounded-full px-3 py-2">
+              <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <span class="text-white text-sm font-bold">A</span>
+              </div>
+              <span class="text-white text-sm">Admin User</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="flex flex-1">
+          <!-- Sidebar -->
+          <div class="w-64 bg-[#1e2125] border-r border-[#2b3136] p-4">
+            <nav class="space-y-2">
+              <div class="sidebar-item active flex items-center gap-3 p-3 rounded-lg text-white bg-[#2b3136]">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48.11-.11a16,16,0,0,1,21.53,0l.11.11,80,75.48A16,16,0,0,1,224,115.55Z"></path>
+                </svg>
+                <span>Overview</span>
+              </div>
+              <div class="sidebar-item flex items-center gap-3 p-3 rounded-lg text-[#a2abb4] hover:bg-[#2b3136] hover:text-white cursor-pointer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64Zm8,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm176,48H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+                </svg>
+                <span>Bot Commands</span>
+              </div>
+              <div class="sidebar-item flex items-center gap-3 p-3 rounded-lg text-[#a2abb4] hover:bg-[#2b3136] hover:text-white cursor-pointer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"></path>
+                </svg>
+                <span>Server Management</span>
+              </div>
+              <div class="sidebar-item flex items-center gap-3 p-3 rounded-lg text-[#a2abb4] hover:bg-[#2b3136] hover:text-white cursor-pointer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+                </svg>
+                <span>User Analytics</span>
+              </div>
+              <div class="sidebar-item flex items-center gap-3 p-3 rounded-lg text-[#a2abb4] hover:bg-[#2b3136] hover:text-white cursor-pointer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.21,107.21,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.71,107.71,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.21,107.21,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8,8,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L82.89,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.43,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.2,100.45a91.57,91.57,0,0,1,6.23-15L69,82.89a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,82.89,69L85.4,46.43a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8,8,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173.11,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.87,123.66Z"></path>
+                </svg>
+                <span>Settings</span>
+              </div>
+            </nav>
+          </div>
+
+          <!-- Dashboard Content -->
+          <div class="flex-1 p-6 overflow-y-auto">
+            <!-- Dashboard Header -->
+            <div class="mb-6">
+              <h1 class="text-white text-2xl font-bold mb-2">Dashboard Overview</h1>
+              <p class="text-[#a2abb4]">Monitor your Cassie Clip bot performance and server statistics</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+              <div class="stat-card bg-[#1e2125] border border-[#40484f] rounded-lg p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="text-blue-400">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-green-400 text-sm">+12%</span>
+                </div>
+                <h3 class="text-white text-2xl font-bold mb-1">2,847</h3>
+                <p class="text-[#a2abb4] text-sm">Active Users</p>
+              </div>
+
+              <div class="stat-card bg-[#1e2125] border border-[#40484f] rounded-lg p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="text-purple-400">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64Zm8,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm176,48H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-green-400 text-sm">+8%</span>
+                </div>
+                <h3 class="text-white text-2xl font-bold mb-1">15,294</h3>
+                <p class="text-[#a2abb4] text-sm">Commands Used</p>
+              </div>
+
+              <div class="stat-card bg-[#1e2125] border border-[#40484f] rounded-lg p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="text-green-400">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48.11-.11a16,16,0,0,1,21.53,0l.11.11,80,75.48A16,16,0,0,1,224,115.55Z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-green-400 text-sm">+3</span>
+                </div>
+                <h3 class="text-white text-2xl font-bold mb-1">47</h3>
+                <p class="text-[#a2abb4] text-sm">Connected Servers</p>
+              </div>
+
+              <div class="stat-card bg-[#1e2125] border border-[#40484f] rounded-lg p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="text-yellow-400">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM164.49,99.51a12,12,0,0,1,0,17l-28,28a12,12,0,0,1-17,0l-28-28a12,12,0,1,1,17-17L128,119l19.51-19.52A12,12,0,0,1,164.49,99.51Z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-green-400 text-sm">99.2%</span>
+                </div>
+                <h3 class="text-white text-2xl font-bold mb-1">99.2%</h3>
+                <p class="text-[#a2abb4] text-sm">Uptime</p>
+              </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              <!-- Command Usage Chart -->
+              <div class="bg-[#1e2125] border border-[#40484f] rounded-lg p-6">
+                <h3 class="text-white text-lg font-semibold mb-4">Command Usage (7 days)</h3>
+                <div class="chart-container" style="height: 300px; position: relative;">
+                  <canvas id="commandChart"></canvas>
+                </div>
+              </div>
+
+              <!-- Server Activity Chart -->
+              <div class="bg-[#1e2125] border border-[#40484f] rounded-lg p-6">
+                <h3 class="text-white text-lg font-semibold mb-4">Server Activity</h3>
+                <div class="chart-container" style="height: 300px; position: relative;">
+                  <canvas id="activityChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Activity & Top Commands -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <!-- Recent Activity -->
+              <div class="bg-[#1e2125] border border-[#40484f] rounded-lg p-6">
+                <h3 class="text-white text-lg font-semibold mb-4">Recent Activity</h3>
+                <div class="space-y-4">
+                  <div class="activity-item flex items-center gap-3 p-3 bg-[#2b3136] rounded-lg">
+                    <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <div>
+                      <p class="text-white text-sm">New server connected: "Epic Fortnite Guild"</p>
+                      <p class="text-[#a2abb4] text-xs">2 minutes ago</p>
+                    </div>
+                  </div>
+                  <div class="activity-item flex items-center gap-3 p-3 bg-[#2b3136] rounded-lg">
+                    <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                    <div>
+                      <p class="text-white text-sm">Command "/dailies" used 47 times</p>
+                      <p class="text-[#a2abb4] text-xs">15 minutes ago</p>
+                    </div>
+                  </div>
+                  <div class="activity-item flex items-center gap-3 p-3 bg-[#2b3136] rounded-lg">
+                    <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                    <div>
+                      <p class="text-white text-sm">System update completed successfully</p>
+                      <p class="text-[#a2abb4] text-xs">1 hour ago</p>
+                    </div>
+                  </div>
+                  <div class="activity-item flex items-center gap-3 p-3 bg-[#2b3136] rounded-lg">
+                    <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                    <div>
+                      <p class="text-white text-sm">High usage detected on "/ventures" command</p>
+                      <p class="text-[#a2abb4] text-xs">3 hours ago</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Top Commands -->
+              <div class="bg-[#1e2125] border border-[#40484f] rounded-lg p-6">
+                <h3 class="text-white text-lg font-semibold mb-4">Top Commands (24h)</h3>
+                <div class="space-y-3">
+                  <div class="command-item flex items-center justify-between p-3 bg-[#2b3136] rounded-lg">
+                    <div class="flex items-center gap-3">
+                      <span class="text-blue-400 font-mono">/dailies</span>
+                      <span class="text-[#a2abb4] text-sm">Daily mission info</span>
+                    </div>
+                    <span class="text-white font-semibold">1,247</span>
+                  </div>
+                  <div class="command-item flex items-center justify-between p-3 bg-[#2b3136] rounded-lg">
+                    <div class="flex items-center gap-3">
+                      <span class="text-purple-400 font-mono">/ventures</span>
+                      <span class="text-[#a2abb4] text-sm">Venture missions</span>
+                    </div>
+                    <span class="text-white font-semibold">892</span>
+                  </div>
+                  <div class="command-item flex items-center justify-between p-3 bg-[#2b3136] rounded-lg">
+                    <div class="flex items-center gap-3">
+                      <span class="text-green-400 font-mono">/shop</span>
+                      <span class="text-[#a2abb4] text-sm">Item shop check</span>
+                    </div>
+                    <span class="text-white font-semibold">674</span>
+                  </div>
+                  <div class="command-item flex items-center justify-between p-3 bg-[#2b3136] rounded-lg">
+                    <div class="flex items-center gap-3">
+                      <span class="text-yellow-400 font-mono">/stats</span>
+                      <span class="text-[#a2abb4] text-sm">Player statistics</span>
+                    </div>
+                    <span class="text-white font-semibold">523</span>
+                  </div>
+                  <div class="command-item flex items-center justify-between p-3 bg-[#2b3136] rounded-lg">
+                    <div class="flex items-center gap-3">
+                      <span class="text-red-400 font-mono">/help</span>
+                      <span class="text-[#a2abb4] text-sm">Help & support</span>
+                    </div>
+                    <span class="text-white font-semibold">387</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="flex justify-center border-t border-[#2b3136]">
+          <div class="flex max-w-[960px] flex-1 flex-col">
+            <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
+              <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
+                <a class="text-[#a2abb4] text-base font-normal leading-normal min-w-40" href="#">Privacy Policy</a>
+                <a class="text-[#a2abb4] text-base font-normal leading-normal min-w-40" href="#">Terms of Service</a>
+              </div>
+              <p class="text-[#a2abb4] text-base font-normal leading-normal">© 2025 Cassie Clip. All rights reserved.</p>
+            </footer>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

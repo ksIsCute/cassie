@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Notifications - Cassie Clip</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main-notifications.js" defer></script>
+    <style>
+        body {
+            background-color: #121417;
+            color: white;
+            font-family: 'Spline Sans', sans-serif;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #2b3136;
+            border-radius: 8px;
+            background-color: #1e2125;
+        }
+        button {
+            background-color: #5865f2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #4752c4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notification System Test</h1>
+    
+    <div class="test-section">
+        <h2>Current Page Info</h2>
+        <p>Current URL: <span id="current-url"></span></p>
+        <p>Current pathname: <span id="current-pathname"></span></p>
+        <p>Is Home Page: <span id="is-home-page"></span></p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test Notifications</h2>
+        <button onclick="testNotification('info')">Test Info Notification</button>
+        <button onclick="testNotification('success')">Test Success Notification</button>
+        <button onclick="testNotification('warning')">Test Warning Notification</button>
+        <button onclick="testNotification('error')">Test Error Notification</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Expected Behavior</h2>
+        <ul>
+            <li>On index.html or root path: Notifications should only appear in console</li>
+            <li>On dashboard pages: Notifications should appear on screen</li>
+            <li>Check browser console to see notification messages</li>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize notifications
+            if (typeof initializeNotifications === 'function') {
+                initializeNotifications();
+            }
+            
+            // Display current page info
+            document.getElementById('current-url').textContent = window.location.href;
+            document.getElementById('current-pathname').textContent = window.location.pathname;
+            
+            // Check if this is considered a home page
+            const isHomePage = window.location.pathname.includes('index.html') || 
+                              window.location.pathname.endsWith('/') || 
+                              window.location.pathname === '' ||
+                              !window.location.pathname.includes('dashboard');
+            
+            document.getElementById('is-home-page').textContent = isHomePage ? 'YES' : 'NO';
+            document.getElementById('is-home-page').style.color = isHomePage ? '#f85149' : '#57f287';
+        });
+        
+        function testNotification(type) {
+            if (typeof showNotification === 'function') {
+                showNotification(`This is a ${type} notification test!`, type);
+                console.log(`Attempted to show ${type} notification`);
+            } else {
+                console.error('showNotification function not available');
+                alert('showNotification function not available');
+            }
+        }
+    </script>
+</body>
+</html>
